@@ -50,6 +50,10 @@
   a{
     @apply text-foreground
   }
+
+  hr{
+    @apply  border-2 border-secondary
+  }
 }
 
 @layer components {
@@ -64,4 +68,9 @@
   .button:active {
     @apply scale-105 transform transition ease-in-out;
   }
+
+  .card {
+    @apply border-[1px] rounded-md p-2 
+  }
+  
 }
