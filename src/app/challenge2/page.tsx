@@ -6,7 +6,7 @@ const Page = () => {
 
 
   useEffect(() => {
-    const savedMode = localStorage.getItem("Mode") as "dark" | "light" | null;
+    const savedMode = localStorage?.getItem("Mode") as "dark" | "light" | undefined;
     if (savedMode) {
       setMode(savedMode);
     }
