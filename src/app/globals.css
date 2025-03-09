@@ -72,5 +72,7 @@
   .card {
     @apply border-[1px] rounded-md p-2 
   }
+
+  
   
 }
