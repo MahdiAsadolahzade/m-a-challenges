@@ -10,7 +10,6 @@ const Page = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [hasMore, setHasMore] = useState(true);
 
-
   const fetchPosts = useCallback(async () => {
     if (loading || !hasMore) return;
     setLoading(true);
@@ -24,8 +23,8 @@ const Page = () => {
       if (data?.length === 0) {
         setHasMore(false);
       } else {
-        setPosts((prevPosts) => [...prevPosts, ...data]); 
-        setPage((prevPage) => prevPage + 1); 
+        setPosts((prevPosts) => [...prevPosts, ...data]);
+        setPage((prevPage) => prevPage + 1);
       }
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -34,10 +33,9 @@ const Page = () => {
     }
   }, [loading, hasMore, page]);
 
-
   useEffect(() => {
     fetchPosts();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +52,7 @@ const Page = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [fetchPosts, loading, hasMore]); 
+  }, [fetchPosts, loading, hasMore]);
 
   return (
     <div className="h-screen w-full">
@@ -62,11 +60,10 @@ const Page = () => {
         <h2>Challenge 1</h2>
         <hr />
       </div>
-     
 
       <div className="">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-          {posts.map((post,index) => (
+          {posts.map((post, index) => (
             <div key={`${post.id}/${index}`} className="h-56">
               <PostCard data={post} />
             </div>
@@ -81,7 +78,7 @@ const Page = () => {
           </div>
         )}
 
-        {posts.length!==0 && (
+        {posts.length !== 0 && (
           <p
             className={`text-center text-foreground my-4 ${
               hasMore && "animate-pulse"
