@@ -66,8 +66,8 @@ const Page = () => {
 
       <div className="">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-          {posts.map((post) => (
-            <div key={`${post.id}/${post.userId}`} className="h-56">
+          {posts.map((post,index) => (
+            <div key={`${post.id}/${index}`} className="h-56">
               <PostCard data={post} />
             </div>
           ))}
