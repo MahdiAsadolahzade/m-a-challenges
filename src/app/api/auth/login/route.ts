@@ -8,7 +8,6 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { email, password } = body;
 
-  
     if (!email || !password) {
       return NextResponse.json(
         { error: "Email and password are required" },
@@ -16,9 +15,7 @@ export async function POST(req: Request) {
       );
     }
 
-  
     const user = users.find((user) => user.email === email);
-
 
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return NextResponse.json(
@@ -27,12 +24,10 @@ export async function POST(req: Request) {
       );
     }
 
-
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
       expiresIn: "1h",
     });
 
-  
     return NextResponse.json({ token }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
